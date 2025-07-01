@@ -55,15 +55,15 @@ def prediction():
     dist = st.slider("Расстояние до цента города (км):", 0, 50, 5)
 
     green = st.selectbox('Насколько "зеленый" микрорайон?', green_values)
-    water = st.selectbox('Как в микрорайоне обстоит с водными объектами?', water_values)
+    water = st.selectbox('Как в микрорайоне обстоит дело с водными объектами?', water_values)
     station = st.selectbox('Есть ли рядом с микрорайоном железная дорога?', jd_values)
     bridge = st.selectbox('Отделен ли микрорайон от центра города мостом (виадуком/эстакадой)?', ['да', 'нет'])
     factory = st.selectbox('Расположены ли рядом с микрорайоном заводы?', ['да', 'нет'])
 
     floors = st.slider("Максимальное количество этажей в домах микрорайона:", 1, 50, 5)
 
-    school = st.selectbox('Оцените обеспеченной микрорайона школами:', school_values)
-    kgarten = st.selectbox('Оцените обеспеченной микрорайона детскими садами:', kgarten_values)
+    school = st.selectbox('Оцените обеспеченность микрорайона школами:', school_values)
+    kgarten = st.selectbox('Оцените обеспеченность микрорайона детскими садами:', kgarten_values)
     supermarket = st.selectbox('Достаточно ли в микрорайоне супермаркетов?', supemarket_values)
     mall = st.selectbox('Есть ли в микрорайоне крупные торговые центры?', mall_values)
     transport = st.selectbox('Хорошо ли микрорайон обеспечен общественным транспортом?', transport_values)
@@ -89,8 +89,6 @@ def prediction():
 
         list_to_predict = ([dist] + values[:3] + yes_no_vals[:2] +
                            [floors] + values[3:-1] + [yes_no_vals[-1]] + [values[-1]])
-
-        st.text(list_to_predict)
 
         models = ['linear', 'lasso', 'ridge', 'bagging', 'boosting', 'stacking']
         for m in models:
